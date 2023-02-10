@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "csharpier": {
+      "version": "0.20.0",
+      "commands": ["dotnet-csharpier"]
+    },
+    "dotnet-outdated-tool": {
+      "version": "4.3.2",
+      "commands": ["dotnet-outdated"]
+    }
+  }
+}
