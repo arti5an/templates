@@ -26,6 +26,9 @@
               export ASPNETCORE_ENVIRONMENT=Development
               export DOTNET_USE_POLLING_FILE_WATCHER=1
 
+              # Restore dotnet tools
+              dotnet tool restore > /dev/null
+
               # Output some helpful info
               echo -e "\ndotnet v$(dotnet --version)\ndotnet tools:"
               dotnet tool list --local | awk 'NR > 2 { sub(/^dotnet-/, "", $3); print "  " $3, "v" $2 }'
