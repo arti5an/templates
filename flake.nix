@@ -12,21 +12,35 @@
       in {
         devShells.default = with pkgs;
           mkShell { buildInputs = [ nixfmt nodePackages.prettier ]; };
-      }) // {
-        templates.dotnet = {
+      }) // (let
+        welcomeText = ''
+          Usage:
+
+          $ nix develop
+
+          or, if you have direnv installed:
+
+          $ direnv allow
+
+          See https://github.com/arti5an/flake-templates for more information.
+        '';
+        dotnetTemplate = {
+          inherit welcomeText;
           path = ./dotnet;
           description = "A standard .NET project";
-          welcomeText = ''
-            Usage:
-
-            $ nix develop
-
-            or, if you have direnv installed:
-
-            $ direnv allow
-
-            See https://github.com/arti5an/flake-templates for more information.
-          '';
         };
-      };
+        javascriptTemplate = {
+          inherit welcomeText;
+          path = ./javascript;
+          description = "A JavaScript project";
+        };
+      in {
+        templates = {
+          csharp = dotnetTemplate;
+          dotnet = dotnetTemplate;
+          javascript = javascriptTemplate;
+          js = javascriptTemplate;
+          node = javascriptTemplate;
+        };
+      });
 }

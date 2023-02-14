@@ -10,11 +10,11 @@ save me a minute or three while writing software.
 
 ## Available Templates
 
-- dotnet - _the main sdk for dotnet development, with option to override the specific version_
+- csharp/dotnet - _the official SDK for .NET (previously .NET Core) development_
+- javascript/js/node - _JavaScript/node environment, predominantly for building web apps_
 
 ## Planned Templates
 
-- node - _node environment of your choosing, with option to override package manager_
 - rails - _ruby on rails environment with foreman for task management and a customised bundix for
   managing gem dependencies via nix_
 - ruby - _ruby environment with customised bundix for managing gem dependencies via nix_
