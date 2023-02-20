@@ -13,7 +13,7 @@
         devShells.default = with pkgs;
           mkShell {
             buildInputs = [
-              nodejs-18_x # LTS version at the time of writing
+              nodejs
               nodePackages.prettier
               # Uncomment any of these to enable alternate package managers:
               # nodePackages.pnpm

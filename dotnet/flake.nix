@@ -16,7 +16,7 @@
               dotnet-sdk # or dotnet-sdk_7, etc.
               gawk # needed for the dotnet tool listing
               # Add other packages here, such as these examples:
-              # nodejs-18_x
+              # nodejs
               # nodePackages.pnpm
               # nodePackages.prettier
             ];
