@@ -2,8 +2,8 @@
   description = "Nix Flake Templates";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "nixpkgs";
+    flake-utils.url = "flake-utils";
   };
 
   outputs = { self, nixpkgs, flake-utils }:
