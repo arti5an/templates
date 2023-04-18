@@ -29,6 +29,11 @@
           path = ./dotnet;
           description = "A standard .NET project";
         };
+        hugoTemplate = {
+          inherit welcomeText;
+          path = ./hugo;
+          description = "A Hugo website project";
+        };
         javascriptTemplate = {
           inherit welcomeText;
           path = ./javascript;
@@ -38,6 +43,7 @@
         templates = {
           csharp = dotnetTemplate;
           dotnet = dotnetTemplate;
+          hugo = hugoTemplate;
           javascript = javascriptTemplate;
           js = javascriptTemplate;
           node = javascriptTemplate;

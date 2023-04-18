@@ -12,6 +12,7 @@ I put together to save me a minute or three while writing software.
 ## Available Templates
 
 - csharp/dotnet - _the official SDK for .NET (previously .NET Core) development_
+- hugo - A simple environment for building Hugo websites
 - javascript/js/node - _JavaScript/node environment, predominantly for building
   web apps_
 
