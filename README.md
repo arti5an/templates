@@ -5,8 +5,9 @@ I put together to save me a minute or three while writing software.
 
 ## Pre-requisites
 
-- **Nix** (obviously) with experimental features enabled for commands and flakes
-- **direnv** (optional) so each flake is applied automatically on entry to the
+- **Nix** _(obviously)_ with experimental features enabled for commands and
+  flakes
+- **direnv** _(optional)_ so each flake is applied automatically on entry to the
   project directory
 
 ## Available Templates
@@ -15,6 +16,8 @@ I put together to save me a minute or three while writing software.
 - hugo - A simple environment for building Hugo websites
 - javascript/js/node - _JavaScript/node environment, predominantly for building
   web apps_
+- prisma - JavaScript/node environment with prisma available, for building
+  database-driven apps
 
 ## Planned Templates
 

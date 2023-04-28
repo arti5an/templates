@@ -39,6 +39,11 @@
           path = ./javascript;
           description = "A JavaScript project";
         };
+        prismaTemplate = {
+          inherit welcomeText;
+          path = ./prisma;
+          description = "A JavaScript project with Prisma";
+        };
       in {
         templates = {
           csharp = dotnetTemplate;
@@ -47,6 +52,7 @@
           javascript = javascriptTemplate;
           js = javascriptTemplate;
           node = javascriptTemplate;
+          prisma = prismaTemplate;
         };
       });
 }
