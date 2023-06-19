@@ -12,22 +12,15 @@
       in {
         devShells.default = with pkgs;
           mkShell {
-            buildInputs = [
-              nodejs
-              nodePackages.prettier
-              # Uncomment any of these to enable alternate package managers:
-              # nodePackages.pnpm
-              # yarn
-            ];
+            buildInputs =
+              [ nodejs-slim nodePackages.pnpm nodePackages.prettier ];
             shellHook = ''
               # Assume development mode when running
               export NODE_ENV=development
 
               # Output some helpful info
               echo -e "\nnode $(node --version)"
-              echo "npm v$(npm --version)"
-              # echo "pnpm v$(pnpm --version)"
-              # echo -e "yarn v$(yarn --version)"
+              echo "pnpm v$(pnpm --version)"
               echo ""
             '';
           };
