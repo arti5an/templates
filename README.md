@@ -16,15 +16,11 @@ I put together to save me a minute or three while writing software.
 - hugo - A simple environment for building Hugo websites
 - javascript/js/node - _JavaScript/node environment, predominantly for building
   web apps_
-- prisma - JavaScript/node environment with prisma available, for building
-  database-driven apps
-
-## Planned Templates
-
-- rails - _ruby on rails environment with foreman for task management and a
-  customised bundix for managing gem dependencies via nix_
-- ruby - _ruby environment with customised bundix for managing gem dependencies
-  via nix_
+- prisma - _JavaScript/node environment with prisma available, for building
+  database-driven apps_
+- rails - _Environment tailored for ruby on rails, including node environment,
+  and a wrapper to pass `yarn` calls from rails to `pnpm` instead_
+- ruby - _Bundler-enabled ruby environment, for building any app_
 
 ## Usage
 

@@ -44,6 +44,16 @@
           path = ./prisma;
           description = "A JavaScript project with Prisma";
         };
+        railsTemplate = {
+          inherit welcomeText;
+          path = ./rails;
+          description = "A ruby on rails project";
+        };
+        rubyTemplate = {
+          inherit welcomeText;
+          path = ./ruby;
+          description = "A ruby project";
+        };
       in {
         templates = {
           csharp = dotnetTemplate;
@@ -53,6 +63,8 @@
           js = javascriptTemplate;
           node = javascriptTemplate;
           prisma = prismaTemplate;
+          rails = railsTemplate;
+          ruby = rubyTemplate;
         };
       });
 }
