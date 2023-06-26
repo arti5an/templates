@@ -31,7 +31,6 @@
           # Isolate the bundler environment
           BUNDLE_DISABLE_SHARED_GEMS = 1;
           BUNDLE_PATH = ".bundle/${environmentId}";
-          BUNDLE_SYSTEM_BINDIR = "./bin";
 
           shellHook = ''
             # Output some helpful info
