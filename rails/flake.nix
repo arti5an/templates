@@ -44,6 +44,13 @@
               bundle install
             fi
 
+            # Create a git repo if missing, to simplify flake use
+            if [ ! -d .git ]; then
+              git init -b main
+              git add -A
+              git commit -m "Initial commit"
+            fi
+
             # Output some helpful info
             echo -e "\nnode $(node --version)"
             echo "pnpm v$(pnpm --version)"
