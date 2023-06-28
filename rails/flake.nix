@@ -44,17 +44,22 @@
           NODE_ENV = "development";
 
           shellHook = ''
-            # Install rails on first run
-            if [ ! -e ./Gemfile.lock ]; then
+            # Install bundle if environment is missing or changes
+            if [ ! -d "$BUNDLE_PATH" ]; then
               bundle install
             fi
 
             # Output some helpful info
-            echo -e "\n$(ruby --version)"
-            echo -e "$(bundle --version)"
-            echo -e "node $(node --version)"
+            echo -e "\nnode $(node --version)"
             echo "pnpm v$(pnpm --version)"
+            ruby --version
+            bundle --version
+            bundle exec rails --version
             echo ""
+
+            if [ ! -e config.ru ]; then
+              echo -e "Run 'bundle exec rails' to get started.\n"
+            fi
           '';
         };
       });

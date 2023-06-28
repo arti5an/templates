@@ -33,9 +33,14 @@
           BUNDLE_PATH = ".bundle/${environmentId}";
 
           shellHook = ''
+            # Install bundle if environment is missing or changes
+            if [ ! -d "$BUNDLE_PATH" ]; then
+              bundle install
+            fi
+
             # Output some helpful info
             echo -e "\n$(ruby --version)"
-            echo -e "$(bundler --version)"
+            bundler --version
             echo ""
           '';
         };
