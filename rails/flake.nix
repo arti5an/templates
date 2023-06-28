@@ -13,10 +13,10 @@
         buildInputs = [
           yarnAlias
           pkgs.bashInteractive
-          pkgs.ruby_3_2
-          pkgs.nodejs-slim
           pkgs.nodePackages.pnpm
           pkgs.nodePackages.prettier
+          pkgs.nodejs-slim
+          pkgs.ruby_3_2
           # Add further nix dependencies here, e.g.:
           # pkgs.sqlite
         ];
@@ -44,6 +44,11 @@
           NODE_ENV = "development";
 
           shellHook = ''
+            # Install rails on first run
+            if [ ! -e ./Gemfile.lock ]; then
+              bundle install
+            fi
+
             # Output some helpful info
             echo -e "\n$(ruby --version)"
             echo -e "$(bundle --version)"
