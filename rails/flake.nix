@@ -39,6 +39,9 @@
           NODE_ENV = "development";
 
           shellHook = ''
+            # Ensure local gem cache exists
+            mkdir -p "$GEM_HOME/bin"
+
             # Install bundle if environment is missing or changes
             if [ ! -d "$BUNDLE_PATH" ]; then
               bundle install
