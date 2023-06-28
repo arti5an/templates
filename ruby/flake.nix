@@ -13,24 +13,19 @@
         buildInputs = [
           pkgs.bashInteractive
           pkgs.ruby_3_2
-          # Add further nix dependencies here, e.g.:
+          # Add further dependencies here, e.g.:
           # pkgs.sqlite
         ];
-        environment = pkgs.stdenv.mkDerivation {
-          inherit buildInputs;
-          name = "environment";
-          phases = [ "installPhase" "fixupPhase" ];
-          installPhase = "touch $out";
-        };
-        environmentId =
-          pkgs.lib.last (pkgs.lib.strings.splitString "/" "${environment}");
       in {
         devShells.default = pkgs.mkShell {
           packages = buildInputs;
 
-          # Isolate the bundler environment
+          # Use gems from a local cache
+          GEM_HOME = ".cache/gems";
+
+          # Use an isolated vendor bundler environment
           BUNDLE_DISABLE_SHARED_GEMS = 1;
-          BUNDLE_PATH = ".bundle/${environmentId}";
+          BUNDLE_PATH = "vendor/bundle";
 
           shellHook = ''
             # Install bundle if environment is missing or changes
@@ -40,7 +35,7 @@
 
             # Output some helpful info
             echo -e "\n$(ruby --version)"
-            bundler --version
+            bundle --version
             echo ""
           '';
         };

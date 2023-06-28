@@ -17,28 +17,23 @@
           pkgs.nodePackages.prettier
           pkgs.nodejs-slim
           pkgs.ruby_3_2
-          # Add further nix dependencies here, e.g.:
+          # Add further dependencies here, e.g.:
           # pkgs.sqlite
         ];
         yarnAlias = pkgs.writeScriptBin "yarn" ''
           #!${pkgs.stdenv.shell}
           pnpm "$@"
         '';
-        environment = pkgs.stdenv.mkDerivation {
-          inherit buildInputs;
-          name = "environment";
-          phases = [ "installPhase" "fixupPhase" ];
-          installPhase = "touch $out";
-        };
-        environmentId =
-          pkgs.lib.last (pkgs.lib.strings.splitString "/" "${environment}");
       in {
         devShells.default = pkgs.mkShell {
           packages = buildInputs;
 
-          # Isolate the bundler environment
+          # Use gems from a local cache
+          GEM_HOME = ".cache/gems";
+
+          # Use an isolated vendor bundler environment
           BUNDLE_DISABLE_SHARED_GEMS = 1;
-          BUNDLE_PATH = ".bundle/${environmentId}";
+          BUNDLE_PATH = "vendor/bundle";
 
           # Ensure node operates in dev mode
           NODE_ENV = "development";
