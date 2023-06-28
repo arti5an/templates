@@ -21,7 +21,7 @@
           packages = buildInputs;
 
           # Use gems from a local cache
-          GEM_HOME = ".cache/gems";
+          GEM_HOME = "tmp/gems";
 
           # Use an isolated vendor bundler environment
           BUNDLE_DISABLE_SHARED_GEMS = 1;
