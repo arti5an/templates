@@ -44,6 +44,11 @@
           path = ./prisma;
           description = "A JavaScript project with Prisma";
         };
+        railsWithoutNodeTemplate = {
+          inherit welcomeText;
+          path = ./railswithoutnode;
+          description = "A ruby on rails project with no dependency on node";
+        };
         railsTemplate = {
           inherit welcomeText;
           path = ./rails;
@@ -64,6 +69,7 @@
           node = javascriptTemplate;
           prisma = prismaTemplate;
           rails = railsTemplate;
+          railswithoutnode = railsWithoutNodeTemplate;
           ruby = rubyTemplate;
         };
       });

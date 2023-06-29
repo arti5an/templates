@@ -20,6 +20,9 @@ I put together to save me a minute or three while writing software.
   database-driven apps_
 - rails - _Environment tailored for ruby on rails, including node environment,
   and a wrapper to pass `yarn` calls from rails to `pnpm` instead_
+- railswithoutnode - _Environment tailored for ruby on rails which has no
+  dependency on node - be sure to use the plain or API template, or the
+  standalone tailwind template using `bundle exec rails . -c tailwind`_
 - ruby - _Bundler-enabled ruby environment, for building any app_
 
 ## Usage
