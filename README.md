@@ -1,7 +1,7 @@
 # Nix Flake Templates
 
 A collection of personal nix flake templates, mainly development focussed, which
-I put together to save me a minute or three while writing software.
+I put together to save me a minute or three whilst writing software.
 
 ## Pre-requisites
 
@@ -30,6 +30,6 @@ I put together to save me a minute or three while writing software.
 ```
 mkdir <project-dir>
 cd <project-dir>
-nix flake init -t github:arti5an/flake-templates#<template-name>
+nix flake init -t github:arti5an/templates#<template-name>
 direnv allow
 ```
