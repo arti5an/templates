@@ -1,17 +1,11 @@
 {
   description = "Ruby Application";
 
-  inputs = {
-    nixpkgs.url = "nixpkgs";
-    flake-utils.url = "flake-utils";
-  };
-
   outputs = { nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
         buildInputs = [
-          pkgs.bashInteractive
           pkgs.ruby_3_2
           # Add further dependencies here, e.g.:
           # pkgs.sqlite

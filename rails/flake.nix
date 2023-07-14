@@ -1,18 +1,12 @@
 {
   description = "Ruby on Rails Application";
 
-  inputs = {
-    nixpkgs.url = "nixpkgs";
-    flake-utils.url = "flake-utils";
-  };
-
   outputs = { nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
         buildInputs = [
           yarnAlias
-          pkgs.bashInteractive
           pkgs.nodePackages.pnpm
           pkgs.nodePackages.prettier
           pkgs.nodejs-slim
