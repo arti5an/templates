@@ -14,10 +14,10 @@
         devShells.default = pkgs.mkShell {
           packages = buildInputs;
 
-          shellHook = ''
-            # Assume development mode when running
-            export NODE_ENV=development
+          # Ensure node operates in dev mode
+          NODE_ENV = "development";
 
+          shellHook = ''
             # Output some helpful info
             echo -e "\nnode $(node --version)"
             echo "pnpm v$(pnpm --version)"

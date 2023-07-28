@@ -16,17 +16,21 @@
         devShells.default = pkgs.mkShell {
           packages = buildInputs;
 
+          # Ensure node operates in dev mode
+          NODE_ENV = "development";
+
+          # Let prisma know where to find stuff
+          PRISMA_MIGRATION_ENGINE_BINARY =
+            "${pkgs.prisma-engines}/bin/migration-engine";
+          PRISMA_QUERY_ENGINE_BINARY =
+            "${pkgs.prisma-engines}/bin/query-engine";
+          PRISMA_QUERY_ENGINE_LIBRARY =
+            "${pkgs.prisma-engines}/lib/libquery_engine.node";
+          PRISMA_INTROSPECTION_ENGINE_BINARY =
+            "${pkgs.prisma-engines}/bin/introspection-engine";
+          PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
+
           shellHook = ''
-            # Assume development mode when running
-            export NODE_ENV=development
-
-            # Let prisma know where to find stuff
-            export PRISMA_MIGRATION_ENGINE_BINARY="${prisma-engines}/bin/migration-engine"
-            export PRISMA_QUERY_ENGINE_BINARY="${prisma-engines}/bin/query-engine"
-            export PRISMA_QUERY_ENGINE_LIBRARY="${prisma-engines}/lib/libquery_engine.node"
-            export PRISMA_INTROSPECTION_ENGINE_BINARY="${prisma-engines}/bin/introspection-engine"
-            export PRISMA_FMT_BINARY="${prisma-engines}/bin/prisma-fmt"
-
             # Output some helpful info
             echo -e "\nnode $(node --version)"
             echo "pnpm v$(pnpm --version)"

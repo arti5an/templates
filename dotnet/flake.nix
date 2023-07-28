@@ -16,13 +16,14 @@
         devShells.default = pkgs.mkShell {
           packages = buildInputs;
 
-          shellHook = ''
-            # Assume development mode when running - mainly to ensure user secrets and
-            # other development niceties are loaded
-            export ASPNETCORE_ENVIRONMENT=Development
-            export DOTNET_USE_POLLING_FILE_WATCHER=1
+          # Ensure user secrets and other development niceties are loaded
+          ASPNETCORE_ENVIRONMENT = "Development";
 
-            # Restore dotnet tools
+          # Uncomment if file changes aren't detected by dotnet watch
+          # DOTNET_USE_POLLING_FILE_WATCHER = 1;
+
+          shellHook = ''
+            # Restore dotnet tools specified in ./.config/dotnet-tools.json
             dotnet tool restore > /dev/null
 
             # Output some helpful info
