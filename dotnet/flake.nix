@@ -7,7 +7,6 @@
         pkgs = nixpkgs.legacyPackages.${system};
         buildInputs = [
           pkgs.dotnet-sdk # or dotnet-sdk_7, etc.
-          pkgs.gawk # needed for the dotnet tool listing
           # Add other packages here, such as these examples:
           # pkgs.nodejs-slim pkgs.nodePackages.pnpm
           # pkgs.nodePackages.prettier
@@ -28,7 +27,7 @@
 
             # Output some helpful info
             echo -e "\ndotnet v$(dotnet --version)"
-            echo -e "dotnet tools:\n$(dotnet tool list --local | awk 'NR > 2 { sub(/^dotnet-/, "", $3); print "  " $3, "v" $2 }')"
+            echo -e "dotnet tools:\n$(dotnet tool list --local | ${pkgs.gawk}/bin/awk 'NR > 2 { sub(/^dotnet-/, "", $3); print "  " $3, "v" $2 }')"
             # echo -e "node $(node --version)"
             # echo "pnpm v$(pnpm --version)"
             echo ""
