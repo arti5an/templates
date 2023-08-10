@@ -35,6 +35,10 @@
             if [ ! -f ./package.json ]; then
               # Initialise a node project
               pnpm init
+            fi
+
+            if [[ -z "$(pnpm list @prisma/client)" ]]; then
+              # Install prisma client matching nix version
               pnpm install @prisma/client@$(prisma --version 2>&1 | ${pkgs.gawk}/bin/awk --field-separator=: '/^prisma\s/ { gsub(/ /, "", $2); print $2 }')
             fi
 
@@ -52,7 +56,7 @@
             # Output some helpful info
             echo -e "\nnode $(node --version)"
             echo "pnpm v$(pnpm --version)"
-            echo -e "\n$(prisma --version 2> /dev/null)\n"
+            echo -e "\n$(prisma --version)\n"
           '';
         };
       });
