@@ -1,12 +1,18 @@
 {
   description = "Nix Flake Templates";
 
-  outputs = { nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-        buildInputs = [ pkgs.nixfmt pkgs.nodePackages.prettier ];
-      in { devShells.default = pkgs.mkShell { packages = buildInputs; }; })
+  outputs = {
+    nixpkgs,
+    flake-utils,
+    ...
+  }:
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+      buildInputs = [pkgs.nixfmt pkgs.nodePackages.prettier];
+    in {
+      devShells.default = pkgs.mkShell {packages = buildInputs;};
+      formatter = pkgs.alejandra;
+    })
     // (let
       welcomeText = ''
         Usage:
