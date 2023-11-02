@@ -22,8 +22,17 @@
           # DOTNET_USE_POLLING_FILE_WATCHER = 1;
 
           shellHook = ''
-            # Restore dotnet tools specified in ./.config/dotnet-tools.json
-            dotnet tool restore > /dev/null
+            if [ -f .config/dotnet-tools.json ]; then
+              # Restore dotnet tools specified in ./.config/dotnet-tools.json
+              dotnet tool restore > /dev/null
+            else
+              # Create dotnet tools
+              dotnet new tool-manifest > /dev/null
+
+              # Add commonly used dotnet tools
+              dotnet tool install csharpier > /dev/null
+              dotnet tool install dotnet-outdated-tool > /dev/null
+            fi
 
             # Output some helpful info
             echo -e "\ndotnet v$(dotnet --version)"
