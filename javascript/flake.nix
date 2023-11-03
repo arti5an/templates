@@ -20,6 +20,9 @@
         # Ensure node operates in dev mode
         NODE_ENV = "development";
 
+        # Prevent pnpm update checks
+        NPM_CONFIG_UPDATE_NOTIFIER = "false";
+
         shellHook = ''
           # Output some helpful info
           echo -e "\nnode $(node --version)"

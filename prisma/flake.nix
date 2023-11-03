@@ -23,6 +23,9 @@
         # Ensure node operates in dev mode
         NODE_ENV = "development";
 
+        # Prevent pnpm update checks
+        NPM_CONFIG_UPDATE_NOTIFIER = "false";
+
         # Let prisma know where to find the introspection engine
         PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
         PRISMA_INTROSPECTION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/introspection-engine";

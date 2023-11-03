@@ -17,8 +17,7 @@
         # Add further dependencies here, e.g.:
         # pkgs.sqlite
       ];
-      yarnAlias = pkgs.writeScriptBin "yarn" ''
-        #!${pkgs.stdenv.shell}
+      yarnAlias = pkgs.writeShellScriptBin "yarn" ''
         pnpm "$@"
       '';
     in {
@@ -34,6 +33,9 @@
 
         # Ensure node operates in dev mode
         NODE_ENV = "development";
+
+        # Prevent pnpm update checks
+        NPM_CONFIG_UPDATE_NOTIFIER = "false";
 
         shellHook = ''
           # Ensure local gem cache exists

@@ -24,6 +24,9 @@
         # Uncomment if file changes aren't detected by dotnet watch
         # DOTNET_USE_POLLING_FILE_WATCHER = 1;
 
+        # Uncomment to prevent pnpm update checks
+        # NPM_CONFIG_UPDATE_NOTIFIER = "false";
+
         shellHook = ''
           if [ -f .config/dotnet-tools.json ]; then
             # Restore dotnet tools specified in ./.config/dotnet-tools.json
