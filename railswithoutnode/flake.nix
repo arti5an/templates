@@ -9,6 +9,7 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
       buildInputs = [
+        pkgs.libyaml # required for psych gem
         pkgs.ruby_3_2
         # Add further dependencies here, e.g.:
         # pkgs.sqlite

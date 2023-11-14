@@ -10,6 +10,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       buildInputs = [
         yarnAlias
+        pkgs.libyaml # required for psych gem
         pkgs.nodePackages.pnpm
         pkgs.nodePackages.prettier
         pkgs.nodejs-slim
