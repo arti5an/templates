@@ -1,9 +1,16 @@
 {
   description = "Nix Flake Templates";
 
+  inputs = {
+    nixos-templates.url = "github:nixos/templates";
+    community-templates.url = "github:nix-community/templates";
+  };
+
   outputs = {
     nixpkgs,
     flake-utils,
+    nixos-templates,
+    community-templates,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
@@ -61,17 +68,21 @@
         description = "A ruby project";
       };
     in {
-      templates = {
-        csharp = dotnetTemplate;
-        dotnet = dotnetTemplate;
-        hugo = hugoTemplate;
-        javascript = javascriptTemplate;
-        js = javascriptTemplate;
-        node = javascriptTemplate;
-        prisma = prismaTemplate;
-        rails = railsTemplate;
-        railswithoutnode = railsWithoutNodeTemplate;
-        ruby = rubyTemplate;
-      };
+      inherit (nixos-templates) defaultTemplate;
+      templates =
+        nixos-templates.templates
+        // community-templates.templates
+        // {
+          csharp = dotnetTemplate;
+          dotnet = dotnetTemplate;
+          hugo = hugoTemplate;
+          javascript = javascriptTemplate;
+          js = javascriptTemplate;
+          node = javascriptTemplate;
+          prisma = prismaTemplate;
+          rails = railsTemplate;
+          railswithoutnode = railsWithoutNodeTemplate;
+          ruby = rubyTemplate;
+        };
     });
 }
