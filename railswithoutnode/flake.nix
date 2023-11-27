@@ -12,7 +12,10 @@
         pkgs.libyaml # required for psych gem
         pkgs.ruby_3_2
         # Add further dependencies here, e.g.:
+        # pkgs.ffmpeg-headless
+        # pkgs.poppler
         # pkgs.sqlite
+        # pkgs.vips
       ];
     in {
       devShells.default = pkgs.mkShell {
@@ -30,9 +33,7 @@
           mkdir -p "$GEM_HOME/bin"
 
           # Install bundle if environment is missing or changes
-          if [ ! -d "$BUNDLE_PATH" ]; then
-            bundle install
-          fi
+          bundle check > /dev/null || bundle install
 
           # Create a git repo if missing, to simplify flake use
           if [ ! -d .git ]; then
