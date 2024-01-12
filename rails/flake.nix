@@ -18,6 +18,7 @@
         pkgs.nodePackages.prettier
         pkgs.nodejs-slim
         pkgs.ruby_3_2
+        pkgs.vim # required for vimdiff merges when scaffolding
         # Add further dependencies here, e.g.:
         # pkgs.ffmpeg-headless
         # pkgs.poppler
@@ -48,12 +49,14 @@
           # Install bundle if environment is missing or changes
           bundle check > /dev/null || bundle install
 
-          # Create binstubs for lsp related tools, if included in bundle
-          for stub in rubocop solargraph yard; do
-            if [ ! -f bin/$stub ]; then
-              bundle list --name-only | grep -q "^$stub$" && bundle binstubs $stub
-            fi
-          done
+          # Create binstubs for lsp related tools, if included in bundle, but only once rails app has been scaffolded
+          if [ -f config/application.rb ]; then
+            for stub in rubocop solargraph yard; do
+              if [ ! -f bin/$stub ]; then
+                bundle list --name-only | grep -q "^$stub$" && bundle binstubs $stub
+              fi
+            done
+          fi
 
           # Create a git repo if missing, to simplify flake use
           if [ ! -d .git ]; then
