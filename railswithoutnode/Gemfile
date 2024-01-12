@@ -1,5 +1,22 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "rails"
+gem 'rails'
+
+group :development, :test do
+  # Add rubocop and some useful plugins
+  gem 'rubocop', require: false
+  gem 'rubocop-capybara', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+end
+
+group :development do
+  # Annotate models with schema information
+  gem 'annotate', require: false
+
+  # Add solargraph and rails plugin
+  gem 'solargraph', require: false
+  gem 'solargraph-rails', require: false
+end

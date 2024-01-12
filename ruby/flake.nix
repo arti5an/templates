@@ -11,7 +11,10 @@
       buildInputs = [
         pkgs.ruby_3_2
         # Add further dependencies here, e.g.:
+        # pkgs.ffmpeg-headless
+        # pkgs.poppler
         # pkgs.sqlite
+        # pkgs.vips
       ];
     in {
       devShells.default = pkgs.mkShell {
@@ -29,9 +32,14 @@
           mkdir -p "$GEM_HOME/bin"
 
           # Install bundle if environment is missing or changes
-          if [ ! -d "$BUNDLE_PATH" ]; then
-            bundle install
-          fi
+          bundle check > /dev/null || bundle install
+
+          # Create binstubs for lsp related tools, if included in bundle
+          for stub in rubocop solargraph yard; do
+            if [ ! -f bin/$stub ]; then
+              bundle list --name-only | grep -q "^$stub$" && bundle binstubs $stub
+            fi
+          done
 
           # Create a git repo if missing, to simplify flake use
           if [ ! -d .git ]; then
@@ -47,6 +55,6 @@
         '';
       };
 
-      formatter = alejandra;
+      formatter = pkgs.alejandra;
     });
 }

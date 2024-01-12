@@ -35,6 +35,13 @@
           # Install bundle if environment is missing or changes
           bundle check > /dev/null || bundle install
 
+          # Create binstubs for rails and lsp related tools, if included in bundle
+          for stub in rails rubocop solargraph yard; do
+            if [ ! -f bin/$stub ]; then
+              bundle list --name-only | grep -q "^$stub$" && bundle binstubs $stub
+            fi
+          done
+
           # Create a git repo if missing, to simplify flake use
           if [ ! -d .git ]; then
             git init -b main
