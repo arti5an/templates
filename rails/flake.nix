@@ -48,8 +48,8 @@
           # Install bundle if environment is missing or changes
           bundle check > /dev/null || bundle install
 
-          # Create binstubs for rails and lsp related tools, if included in bundle
-          for stub in rails rubocop solargraph yard; do
+          # Create binstubs for lsp related tools, if included in bundle
+          for stub in rubocop solargraph yard; do
             if [ ! -f bin/$stub ]; then
               bundle list --name-only | grep -q "^$stub$" && bundle binstubs $stub
             fi
