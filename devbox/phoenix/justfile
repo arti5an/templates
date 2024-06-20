@@ -1,0 +1,33 @@
+# List the recipes available to just
+default:
+  @just --list
+
+# Open a dev console
+console:
+  @iex -S mix
+
+# Display information about how postgres works in devbox
+info:
+  @devbox info postgresql
+
+# Print the routes available
+routes:
+  @mix phx.routes
+
+# Set up dependencies using mix and hex, and configure postgres
+setup:
+  mix local.hex --force
+  mix archive.install hex phx_new --force
+  initdb -U postgres
+
+# Start up the devbox services
+start:
+  @devbox services up
+
+# Stop the devbox services
+stop:
+  @devbox services stop
+
+# Run the test suite
+test:
+  @mix test

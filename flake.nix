@@ -40,6 +40,11 @@
       path = ./javascript;
       description = "A JavaScript project";
     };
+    phoenixTemplate = {
+      inherit welcomeText;
+      path = ./devbox/phoenix;
+      description = "An Elixir/Phoenix project";
+    };
     prismaTemplate = {
       inherit welcomeText;
       path = ./prisma;
@@ -74,6 +79,7 @@
         javascript = javascriptTemplate;
         js = javascriptTemplate;
         node = javascriptTemplate;
+        phoenix = phoenixTemplate;
         prisma = prismaTemplate;
         rails = railsTemplate;
         railswithoutnode = railsWithoutNodeTemplate;

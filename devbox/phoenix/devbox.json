@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.10.7/.schema/devbox.schema.json",
+  "packages": [
+    "elixir@latest",
+    "inotify-tools@latest",
+    "just@latest",
+    "postgresql@latest"
+  ],
+  "env": {
+    "ERL_AFLAGS": "-kernel shell_history enabled",
+    "HEX_HOME": "$PWD/.devbox/virtenv/hex",
+    "MIX_HOME": "$PWD/.devbox/virtenv/mix"
+  },
+  "shell": {
+    "init_hook": ["mkdir -p \"${HEX_HOME}\"", "mkdir -p \"${MIX_HOME}\""],
+    "scripts": {
+      "setup": ["just setup"]
+    }
+  }
+}

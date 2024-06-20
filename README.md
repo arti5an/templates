@@ -16,6 +16,7 @@ I put together to save me a minute or three whilst writing software.
 - hugo - A simple environment for building Hugo websites
 - javascript/js/node - _JavaScript/node environment, predominantly for building
   web apps_
+- phoenix - _Devbox environment tailored for Elixir/Phoenix development_
 - prisma - _JavaScript/node environment with prisma available, for building
   database-driven apps_
 - rails - _Environment tailored for ruby on rails, including node environment,

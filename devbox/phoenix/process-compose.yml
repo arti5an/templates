@@ -1,0 +1,23 @@
+version: "0.5"
+
+processes:
+  deps:
+    namespace: "init"
+    command: "mix deps.get"
+
+  dbsetup:
+    namespace: "init"
+    command: "mix ecto.setup"
+    depends_on:
+      deps:
+        condition: process_completed_successfully
+      postgresql:
+        condition: process_launched
+
+  server:
+    command: "mix phx.server"
+    depends_on:
+      dbsetup:
+        condition: process_completed
+    availability:
+      restart: "always"
