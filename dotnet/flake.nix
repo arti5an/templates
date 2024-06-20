@@ -1,6 +1,11 @@
 {
   description = ".NET Application";
 
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+
   outputs = {
     nixpkgs,
     flake-utils,
@@ -9,7 +14,7 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
       buildInputs = [
-        pkgs.dotnet-sdk # or dotnet-sdk_7, etc.
+        pkgs.dotnet-sdk # or dotnet-sdk_8, etc.
         # Add other packages here, such as these examples:
         # pkgs.nodejs-slim pkgs.nodePackages.pnpm
         # pkgs.nodePackages.prettier
