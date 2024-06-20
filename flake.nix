@@ -2,8 +2,8 @@
   description = "Nix Flake Templates";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixos-templates.url = "github:nixos/templates";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixos-templates.url = "github:NixOS/templates";
     community-templates.url = "github:nix-community/templates";
   };
 
@@ -23,7 +23,7 @@
 
       $ direnv allow
 
-      See https://github.com/arti5an/flake-templates for more information.
+      See https://github.com/arti5an/templates for more information.
     '';
     dotnetTemplate = {
       inherit welcomeText;
